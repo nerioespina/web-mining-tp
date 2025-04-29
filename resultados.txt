@@ -1,0 +1,58 @@
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+AutoML progress: |
+21:53:44.724: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
+
+
+21:53:46.57: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
+21:53:46.246: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
+
+█
+21:53:46.907: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
+
+██
+21:53:48.182: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
+
+█
+21:53:49.179: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
+
+██
+21:53:49.942: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
+
+█
+21:53:51.84: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
+
+██
+21:53:52.97: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
+21:53:53.376: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
+
+██
+21:53:54.184: _train param, Dropping unused columns: [departamento_id, categoria_id]
+21:53:54.638: _train param, Dropping unused columns: [departamento_id, categoria_id]
+
+████████████████████████████████████████████████████| (done) 100%
+model_id                                                    rmse      mse       mae     rmsle    mean_residual_deviance
+GBM_3_AutoML_2_20250428_215344                           2.00728  4.02917  0.813829  0.186615                   4.02917
+StackedEnsemble_BestOfFamily_1_AutoML_2_20250428_215344  2.02604  4.10482  0.856464  0.194143                   4.10482
+XGBoost_3_AutoML_2_20250428_215344                       2.04923  4.19932  0.894447  0.199505                   4.19932
+GBM_4_AutoML_2_20250428_215344                           2.05566  4.22572  0.854097  0.195605                   4.22572
+StackedEnsemble_AllModels_1_AutoML_2_20250428_215344     2.05593  4.22686  0.8127    0.186415                   4.22686
+XGBoost_2_AutoML_2_20250428_215344                       2.12918  4.53342  0.955579  0.225055                   4.53342
+GBM_2_AutoML_2_20250428_215344                           2.14351  4.59463  0.925642  0.201561                   4.59463
+XGBoost_1_AutoML_2_20250428_215344                       2.26507  5.13054  1.05803   0.236113                   5.13054
+XRT_1_AutoML_2_20250428_215344                           2.30979  5.33512  1.16749   0.250688                   5.33512
+DRF_1_AutoML_2_20250428_215344                           2.44947  5.99989  1.18708   0.254794                   5.99989
+[12 rows x 6 columns]
+
+gbm prediction progress: |███████████████████████████████████████████████████████| (done) 100%
+  predict
+  2.86031
+  7.59856
+  4.19444
+  5.89896
+ 14.5093
+  6.25962
+ 16.4398
+  5.69933
+  5.28794
+  3.27957
+[83 rows x 1 column]
