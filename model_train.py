@@ -35,7 +35,7 @@ import spacy
 nlp = spacy.load('es_core_news_sm')
 import optuna
 
-conn = sqlite3.connect('inmuebles_final.db')
+conn = sqlite3.connect('../inmuebles_final.db')
 df_all = pd.read_sql_query("SELECT * FROM vista_inmuebles where categoria_id = 4 and departamento_id = 6", conn)
 conn.close()
 df_all.head()
