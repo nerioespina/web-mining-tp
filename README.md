@@ -87,10 +87,10 @@ Las contribuciones son bienvenidas. Por favor, abre un issue o envía un pull re
 Licencia MIT.
 
 Autores:
-Bello, Macarena
-Espina, Nerio
-Ludueña, Marcos
-Raco, Fernando
-Sarmiento, Patricia
+- Bello, Macarena.
+- Espina, Nerio
+- Ludueña, Marcos
+- Raco, Fernando
+- Sarmiento, Patricia
 
 
