@@ -1,0 +1,9 @@
+h2o
+requests
+bs4
+pandas
+pysqlite3
+ipykernel
+sweetviz
+ydata_profiling
+dtale
