@@ -30,7 +30,6 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.impute import SimpleImputer
 from sklearn.ensemble import VotingClassifier
 
-
 import spacy
 nlp = spacy.load('es_core_news_sm')
 import optuna
@@ -38,16 +37,7 @@ import optuna
 conn = sqlite3.connect('../inmuebles_final.db')
 df_all = pd.read_sql_query("SELECT * FROM vista_inmuebles where categoria_id = 4 and departamento_id = 6", conn)
 conn.close()
-df_all.head()
-
-# Eliminar filas con valores nulos en la columna 'precio'
-df_all = df_all.dropna(subset=['precio'])
-
-# Agregar una nueva columna 'clase' basada en el precio
-df_all['clase'] = (df_all['precio'] // 25000).astype(int)
-
-# Mostrar las primeras filas del DataFrame para verificar el resultado
-df_all[['precio', 'clase']].head()
+# df_all.head()
 
 df_all = df_all.select_dtypes(exclude=['object'])
 df_all.dtypes
@@ -56,7 +46,7 @@ df_all.dtypes
 df_all = df_all.dropna(subset=['superficie_total', 'superficie_cubierta'])
 
 # Mostrar las primeras filas para verificar
-df_all.head()
+# df_all.head()
 
 # Calcular la matriz de correlación
 correlation_matrix = df_all.corr()
@@ -83,6 +73,7 @@ plt.ylabel('Inercia')
 plt.show()
 
 df_all['precio_m2'] = df_all['precio'] / df_all['superficie_cubierta_m2']
+
 
 df_all = df_all[df_all['precio_m2'] != float('inf')]
 
@@ -124,18 +115,14 @@ def predecir_precio_m2(longitud, latitud):
     
     return cluster_asignado, precio_m2
 
-
-
 # Agregar la columna 'precio_cluster' al DataFrame
 df_all['precio_cluster'] = df_all.apply(lambda row: predecir_precio_m2(row['longitude'], row['latitude'])[1], axis=1)
 
 # Mostrar las primeras filas para verificar
-df_all[['longitude', 'latitude', 'precio_cluster']].head()
+# df_all[['longitude', 'latitude', 'precio_cluster']].head()
 
 
-df_all = df_all.drop(columns=['precio'])
-
-!pip install h2o
+# !pip install h2o
 
 import h2o
 from h2o.automl import H2OAutoML
@@ -147,8 +134,8 @@ h2o.init()
 h2o_df = h2o.H2OFrame(df_all)
 
 # Specify predictors and target
-predictors = [col for col in h2o_df.columns if col != 'clase']
-target = 'clase'
+predictors = [col for col in h2o_df.columns if col != 'precio']
+target = 'precio'
 
 # Split data into train and test sets
 train, test = h2o_df.split_frame(ratios=[0.8], seed=42)
@@ -165,6 +152,9 @@ print(lb)
 predictions = aml.leader.predict(test)
 print(predictions)
 
+# test_df.head()
+
+
 # Convert H2OFrame predictions to pandas DataFrame
 predictions_df = predictions.as_data_frame()
 
@@ -172,18 +162,21 @@ predictions_df = predictions.as_data_frame()
 test_df = test.as_data_frame()
 
 # Add predictions to the test DataFrame
-test_df['predicted_clase'] = predictions_df['predict']
+test_df['predicted_price'] = predictions_df['predict']
 
 # Compare predictions with actual 'clase' values
-comparison = test_df[['clase', 'predicted_clase']]
+comparison = test_df[['precio', 'predicted_price']]
+# print(comparison.head())
+
 
 # Calcular el porcentaje de error para cada fila
-test_df['error_porcentaje'] = abs(test_df['clase'] - test_df['predicted_clase']) / test_df['clase'] * 100
+test_df['error_porcentaje'] = abs(test_df['precio'] - test_df['predicted_price']) / test_df['precio'] * 100
 
 # Calcular el promedio de los errores porcentuales
 error_promedio = test_df['error_porcentaje'].mean()
 
 print(f"El porcentaje promedio de error es: {error_promedio:.2f}%")
+
 
 # Save the best model
 model_path = h2o.save_model(model=aml.leader, path="./best_model", force=True)

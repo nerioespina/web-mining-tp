@@ -1,58 +1,128 @@
+
+precio	publicacion	visitas	anuncio_id	superficie_total	superficie_cubierta	apto_credito	en_barrio_privado	latitude	longitude	...	antiguedad_escala	banos_escala	ambientes_escala	dormitorios_escala	garages_escala	orientacion_id	departamento_id	superficie_total_m2	superficie_cubierta_m2	comentarios
+0	70000.0	2025-04-07 00:00:00	3856	1025602	NaN	120.0	0	0	-31.530373	-68.529276	...	NaN	3.0		4	NaN	4	6	NaN	120.0	DEPARTAMENTO a 3 cuadras de Avenida Libertador...
+1	680000.0	2025-04-15 00:00:00	8603	1061454	648.0	475.0	1	0	-31.533720	-68.534496	...	7.0	5.0	5	5	NaN	4	6	648.0	475.0	✔ ZONA CENTRO RESIDENCIAL - IMPORTANTE CASA s...
+2	100000.0	2025-04-01 00:00:00	6235	1142416	NaN	NaN	0	0	-31.537213	-68.525290	...	NaN	2.0		3	NaN	4	6	NaN	NaN	Vendo propiedad en PH de aproximadamente, ubic...
+3	390000.0	2025-04-14 00:00:00	14661	1149653	830.0	450.0	0	1	-31.540651	-68.547306	...	NaN	3.0	5	3	2.0	4	6	830.0	450.0	--- Porfavor Comunicarse al 2644368979 - Claud...
+4	200000.0	2025-04-10 00:00:00	3903	1193647	450.0	300.0	0	0	-31.538696	-68.508197	...	NaN	3.0	5	3	2.0	3	6	450.0	300.0	Casa de categoría, 3 dormitorios, 3 baños, est...
+5 rows × 22 columns
+
+precio                    float64
+visitas                     int64
+anuncio_id                  int64
+superficie_total          float64
+superficie_cubierta       float64
+apto_credito                int64
+en_barrio_privado           int64
+latitude                  float64
+longitude                 float64
+categoria_id                int64
+antiguedad_escala         float64
+banos_escala              float64
+dormitorios_escala          int64
+garages_escala            float64
+orientacion_id              int64
+departamento_id             int64
+superficie_total_m2       float64
+superficie_cubierta_m2    float64
+dtype: object
+precio	visitas	anuncio_id	superficie_total	superficie_cubierta	apto_credito	en_barrio_privado	latitude	longitude	categoria_id	antiguedad_escala	banos_escala	dormitorios_escala	garages_escala	orientacion_id	departamento_id	superficie_total_m2	superficie_cubierta_m2
+1	680000.0	8603	1061454	648.0	475.0	1	0	-31.533720	-68.534496	4	7.0	5.0	5	NaN	4	6	648.0	475.0
+3	390000.0	14661	1149653	830.0	450.0	0	1	-31.540651	-68.547306	4	NaN	3.0	3	2.0	4	6	830.0	450.0
+4	200000.0	3903	1193647	450.0	300.0	0	0	-31.538696	-68.508197	4	NaN	3.0	3	2.0	3	6	450.0	300.0
+6	120000.0	11457	1343673	380.0	250.0	0	0	-31.537213	-68.525290	4	NaN	2.0	3	2.0	4	6	380.0	250.0
+8	120000.0	15544	1409453	240.0	112.0	0	1	-31.537213	-68.525290	4	1.0	3.0	3	2.0	4	6	240.0	112.0
+
+
+   cluster  precio_m2_promedio  longitud_centro  latitud_centro
+0        0          982.284237       -68.525668      -31.537086
+1        1          439.393939       -58.731580      -38.579775
+2        2         1049.865664       -68.545005      -31.530903
+3        3          718.544010       -68.492046      -31.573955
+4        4          644.987086       -68.521149      -31.521591
+5        5          821.178050       -68.537729      -31.544461
+6        6          982.484311       -68.562419      -31.540433
+7        7          776.737328       -68.515849      -31.553307
+8        8          786.005552       -68.514690      -31.539264
+9        9          882.796269       -68.554926      -31.520297
+longitude	latitude	precio_cluster
+1	-68.534496	-31.533720	982.284237
+3	-68.547306	-31.540651	1049.865664
+4	-68.508197	-31.538696	786.005552
+6	-68.525290	-31.537213	982.284237
+8	-68.525290	-31.537213	982.284237
+Requirement already satisfied: h2o in /home/nespina/repos/web-mining-tp/.venv/lib/python3.12/site-packages (3.46.0.7)
+Requirement already satisfied: requests in /home/nespina/repos/web-mining-tp/.venv/lib/python3.12/site-packages (from h2o) (2.32.3)
+Requirement already satisfied: tabulate in /home/nespina/repos/web-mining-tp/.venv/lib/python3.12/site-packages (from h2o) (0.9.0)
+Requirement already satisfied: charset-normalizer<4,>=2 in /home/nespina/repos/web-mining-tp/.venv/lib/python3.12/site-packages (from requests->h2o) (3.4.1)
+Requirement already satisfied: idna<4,>=2.5 in /home/nespina/repos/web-mining-tp/.venv/lib/python3.12/site-packages (from requests->h2o) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /home/nespina/repos/web-mining-tp/.venv/lib/python3.12/site-packages (from requests->h2o) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in /home/nespina/repos/web-mining-tp/.venv/lib/python3.12/site-packages (from requests->h2o) (2025.1.31)
+Checking whether there is an H2O instance running at http://localhost:54321. connected.
+H2O_cluster_uptime:	6 days 20 hours 1 min
+H2O_cluster_timezone:	America/Argentina/Buenos_Aires
+H2O_data_parsing_timezone:	UTC
+H2O_cluster_version:	3.46.0.7
+H2O_cluster_version_age:	1 month and 1 day
+H2O_cluster_name:	H2O_from_python_nespina_pzfete
+H2O_cluster_total_nodes:	1
+H2O_cluster_free_memory:	3.775 Gb
+H2O_cluster_total_cores:	16
+H2O_cluster_allowed_cores:	16
+H2O_cluster_status:	locked, healthy
+H2O_connection_url:	http://localhost:54321
+H2O_connection_proxy:	{"http": null, "https": null}
+H2O_internal_security:	False
+Python_version:	3.12.3 final
 Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
 AutoML progress: |
-21:53:44.724: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
-
-
-21:53:46.57: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
-21:53:46.246: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
+22:01:20.868: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
 
 █
-21:53:46.907: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
-
-██
-21:53:48.182: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
-
-█
-21:53:49.179: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
-
-██
-21:53:49.942: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
+22:01:23.909: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
+22:01:23.961: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
+22:01:24.227: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
 
 █
-21:53:51.84: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
+22:01:25.225: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
+22:01:26.28: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
 
 ██
-21:53:52.97: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
-21:53:53.376: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
+22:01:26.334: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
+22:01:26.672: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
+22:01:27.55: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
 
 ██
-21:53:54.184: _train param, Dropping unused columns: [departamento_id, categoria_id]
-21:53:54.638: _train param, Dropping unused columns: [departamento_id, categoria_id]
+22:01:28.88: _train param, Dropping bad and constant columns: [departamento_id, categoria_id]
 
-████████████████████████████████████████████████████| (done) 100%
-model_id                                                    rmse      mse       mae     rmsle    mean_residual_deviance
-GBM_3_AutoML_2_20250428_215344                           2.00728  4.02917  0.813829  0.186615                   4.02917
-StackedEnsemble_BestOfFamily_1_AutoML_2_20250428_215344  2.02604  4.10482  0.856464  0.194143                   4.10482
-XGBoost_3_AutoML_2_20250428_215344                       2.04923  4.19932  0.894447  0.199505                   4.19932
-GBM_4_AutoML_2_20250428_215344                           2.05566  4.22572  0.854097  0.195605                   4.22572
-StackedEnsemble_AllModels_1_AutoML_2_20250428_215344     2.05593  4.22686  0.8127    0.186415                   4.22686
-XGBoost_2_AutoML_2_20250428_215344                       2.12918  4.53342  0.955579  0.225055                   4.53342
-GBM_2_AutoML_2_20250428_215344                           2.14351  4.59463  0.925642  0.201561                   4.59463
-XGBoost_1_AutoML_2_20250428_215344                       2.26507  5.13054  1.05803   0.236113                   5.13054
-XRT_1_AutoML_2_20250428_215344                           2.30979  5.33512  1.16749   0.250688                   5.33512
-DRF_1_AutoML_2_20250428_215344                           2.44947  5.99989  1.18708   0.254794                   5.99989
+█████████████████████████████████████████████████████████| (done) 100%
+
+22:01:28.905: _train param, Dropping unused columns: [departamento_id, categoria_id]
+22:01:29.238: _train param, Dropping unused columns: [departamento_id, categoria_id]
+
+model_id                                                    rmse          mse      mae       rmsle    mean_residual_deviance
+GBM_3_AutoML_3_20250428_220120                           49053.5  2.40625e+09  18209.3    0.520713               2.40625e+09
+GBM_4_AutoML_3_20250428_220120                           49106.3  2.41143e+09  19429.6    0.530516               2.41143e+09
+StackedEnsemble_AllModels_1_AutoML_3_20250428_220120     49162.2  2.41692e+09  18150      0.5169                 2.41692e+09
+StackedEnsemble_BestOfFamily_1_AutoML_3_20250428_220120  49833.3  2.48336e+09  18462.1    0.510646               2.48336e+09
+XGBoost_3_AutoML_3_20250428_220120                       50663.7  2.56682e+09  20048.7    0.516736               2.56682e+09
+XGBoost_2_AutoML_3_20250428_220120                       50732.4  2.57378e+09  21143.1  nan                      2.57378e+09
+GBM_2_AutoML_3_20250428_220120                           52547.4  2.76123e+09  21194.7    0.522374               2.76123e+09
+XGBoost_1_AutoML_3_20250428_220120                       55069.3  3.03263e+09  25580      0.55782                3.03263e+09
+DRF_1_AutoML_3_20250428_220120                           58684.9  3.44392e+09  27490.5    0.584166               3.44392e+09
+XRT_1_AutoML_3_20250428_220120                           58996.2  3.48055e+09  27096      0.584614               3.48055e+09
 [12 rows x 6 columns]
 
 gbm prediction progress: |███████████████████████████████████████████████████████| (done) 100%
   predict
-  2.86031
-  7.59856
-  4.19444
-  5.89896
- 14.5093
-  6.25962
- 16.4398
-  5.69933
-  5.28794
-  3.27957
+  81598.9
+ 171283
+ 108165
+ 158505
+ 365219
+ 163101
+ 415787
+ 154582
+ 136724
+  92575
 [83 rows x 1 column]
